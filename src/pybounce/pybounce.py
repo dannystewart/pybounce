@@ -3,7 +3,7 @@
 """Uploads audio files to a Telegram channel.
 
 To have this run automatically via Hazel, call it as an embedded script like this:
-    source ~/.zshrc && $(pyenv which python) -m dsbin.music.pybounce "$1"
+    source ~/.zshrc && $(pyenv which python) -m pybounce.pybounce "$1"
 """
 
 from __future__ import annotations
