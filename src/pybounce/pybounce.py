@@ -11,6 +11,7 @@ from __future__ import annotations
 import argparse
 import asyncio
 import logging
+import sys
 from concurrent.futures import ThreadPoolExecutor
 from datetime import datetime
 from pathlib import Path
@@ -46,6 +47,10 @@ def parse_arguments() -> argparse.Namespace:
     parser.add_argument("--debug", action="store_true", help="enable debug mode")
     parser.add_argument("files", nargs="*", help="files to upload")
     parser.add_argument("comment", nargs="?", default="", help="comment to add to the upload")
+
+    # Return default args if being run by pdoc
+    if len(sys.argv) > 0 and sys.argv[0].endswith("pdoc"):
+        return argparse.Namespace(debug=False, files=[], comment="")
     return parser.parse_args()
 
 
